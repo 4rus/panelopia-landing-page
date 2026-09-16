@@ -1,0 +1,965 @@
+/* ══════════════════════════════════════════════════════════════
+   PANELOPIA — Wall Panels Calgary & Edmonton
+   Conversion-first local service page. Real installation photography,
+   plain typography, no hero, no decorative gimmicks.
+═══════════════════════════════════════════════════════════════ */
+
+.page {
+  background: var(--cream);
+  color: var(--ink);
+}
+
+/* ── shared type helpers ─────────────────────────────────────── */
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(26px, 3.2vw, 38px);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.h2Light {
+  composes: h2;
+  color: var(--cream);
+}
+
+.lede {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-60);
+  max-width: 52ch;
+  margin-top: 10px;
+}
+
+.ledeLight {
+  composes: lede;
+  color: rgba(250, 248, 244, 0.65);
+}
+
+.sectionHead {
+  max-width: 1120px;
+  margin: 0 auto 32px;
+  padding: 0 clamp(20px, 5vw, 48px);
+}
+
+/* ══════════════════ HEADER ═════════════════════════════════════ */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--cream);
+  border-bottom: 1px solid var(--ink-10);
+}
+
+.topbarInner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 6px clamp(20px, 4vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.logoImg {
+  height: 80px;
+  width: auto;
+}
+
+.topbarNav {
+  display: flex;
+  gap: 28px;
+}
+
+.topbarNav a {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink-60);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.topbarNav a:hover {
+  color: var(--ink);
+}
+
+.topbarActions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.topbarPhone {
+  display: none;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.topbarPhoneIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--ink-10);
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.topbarCta {
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 11px 20px;
+  border-radius: var(--r-sm);
+  white-space: nowrap;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.topbarCta:hover {
+  background: var(--amber-dark);
+}
+
+@media (min-width: 640px) {
+  .topbarPhone { display: block; }
+  .topbarPhoneIcon { display: none; }
+}
+
+@media (max-width: 780px) {
+  .topbarNav { display: none; }
+  .logoImg { height: 56px; }
+
+  /* Header is shorter on mobile (smaller logo, same padding) — match the
+     anchor-scroll offset so section headings don't land under the sticky
+     header here either. */
+  .products, .process, .gallery, .quote, .faq { scroll-margin-top: 74px; }
+}
+
+@media (max-width: 360px) {
+  /* At very narrow widths (e.g. 320px) logo + phone icon + "Get a Free
+     Quote" no longer fit on one row without overflowing horizontally —
+     tighten spacing only here, nothing changes above this width. */
+  .topbarInner { gap: 12px; }
+  .topbarActions { gap: 10px; }
+  .topbarCta { padding: 11px 14px; }
+}
+
+/* ══════════════════ INTRO — plain, no photo, no overlay ════════ */
+.intro {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(26px, 4.6vw, 48px) clamp(20px, 5vw, 48px) clamp(22px, 3.4vw, 38px);
+  text-align: center;
+}
+
+.introTitle {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(28px, 3.6vw, 42px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.introSub {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-80);
+  max-width: 48ch;
+  margin: 0 auto 10px;
+}
+
+.introProducts {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-60);
+  margin-bottom: 26px;
+}
+
+.ctaRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  background: var(--amber);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 700;
+  padding: 15px 26px;
+  border-radius: var(--r-sm);
+  transition: background var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+
+.btnPrimary:hover {
+  background: var(--amber-light);
+  transform: translateY(-1px);
+}
+
+.callLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.introNote {
+  margin-top: 16px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+
+/* ══════════════════ REAL INSTALLATIONS ═════════════════════════ */
+.installations {
+  padding: 0 0 clamp(56px, 7vw, 96px);
+}
+
+.installGrid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+  gap: 10px;
+}
+
+.installItem {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-sm);
+  background: var(--ink-10);
+}
+
+.installWide {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.installImg {
+  object-fit: cover;
+}
+
+.installItem::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(12,10,7,0.45) 0%, transparent 38%);
+}
+
+.installLabel {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  z-index: 2;
+  color: var(--white);
+  font-size: 12.5px;
+  font-weight: 600;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+}
+
+@media (max-width: 820px) {
+  .installGrid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
+  .installWide { grid-column: 1 / -1; grid-row: span 2; }
+}
+
+/* ══════════════════ PRODUCTS ═══════════════════════════════════
+   Full-width photograph, plain caption bar underneath. */
+.products {
+  padding: clamp(56px, 7vw, 96px) 0;
+  background: var(--cream-dark);
+  scroll-margin-top: 96px;
+}
+
+.productList {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 48px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(36px, 5vw, 56px);
+}
+
+.productBlock {
+  width: 100%;
+}
+
+.productImg {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: var(--r-sm);
+}
+
+.productImgEl {
+  object-fit: cover;
+}
+
+.productMeta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: clamp(16px, 3vw, 40px);
+  padding-top: 14px;
+  margin-top: 14px;
+  border-top: 1px solid var(--ink-10);
+  flex-wrap: wrap;
+}
+
+.productMeta h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+}
+
+.productMeta p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-60);
+  max-width: 48ch;
+  flex: 1;
+  min-width: 220px;
+}
+
+@media (max-width: 560px) {
+  .productMeta { flex-direction: column; gap: 6px; }
+}
+
+/* ══════════════════ PROCESS (Supply / Delivery / Install) ══════ */
+.process {
+  padding: clamp(56px, 7vw, 96px) 0;
+  scroll-margin-top: 96px;
+}
+
+.processInner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 48px);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+
+.processList {
+  list-style: none;
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.processStep {
+  display: flex;
+  gap: 16px;
+}
+
+.processNum {
+  font-family: var(--font-accent);
+  font-size: 20px;
+  color: var(--amber-dark);
+  flex-shrink: 0;
+  width: 32px;
+}
+
+.processTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16.5px;
+  margin-bottom: 4px;
+}
+
+.processBody {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-60);
+}
+
+.processImg {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--r-sm);
+}
+
+@media (max-width: 860px) {
+  .processInner { grid-template-columns: 1fr; }
+  .processImg { order: -1; aspect-ratio: 16 / 10; }
+}
+
+/* ══════════════════ WHY PANELOPIA / TRUST ══════════════════════ */
+.why {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(56px, 7vw, 96px) clamp(20px, 5vw, 48px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+}
+
+.whyBody {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-70, var(--ink-60));
+  margin-top: 14px;
+  max-width: 46ch;
+}
+
+.trustList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+}
+
+.trustList li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-80);
+}
+
+.trustList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 2px;
+  background: var(--coral);
+}
+
+@media (max-width: 780px) {
+  .why { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════ GALLERY / PROJECT PROOF ════════════════════ */
+.gallery {
+  padding: clamp(56px, 7vw, 96px) 0;
+  background: var(--cream-dark);
+  scroll-margin-top: 96px;
+}
+
+.galleryGrid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.galleryItem {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--r-sm);
+  background: var(--ink-10);
+}
+
+.galleryImg {
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.galleryItem:hover .galleryImg {
+  transform: scale(1.04);
+}
+
+@media (max-width: 860px) {
+  .galleryGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 520px) {
+  .galleryGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ══════════════════ QUOTE / LEAD FORM ══════════════════════════ */
+.quote {
+  background: var(--ink);
+  scroll-margin-top: 96px;
+}
+
+.quoteInner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+.quoteIntro {
+  padding: clamp(48px, 6vw, 80px) clamp(24px, 5vw, 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quoteInfo {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.quoteInfoRow {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 14px;
+  font-size: 14px;
+  color: rgba(250, 248, 244, 0.58);
+  line-height: 1.5;
+}
+
+.quoteInfoRow strong {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.quoteInfoRow a {
+  color: rgba(250, 248, 244, 0.85);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.quoteFormWrap {
+  background: var(--cream);
+  padding: clamp(32px, 5vw, 56px) clamp(24px, 5vw, 56px);
+}
+
+.quoteForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 540px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formLabel {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink-60);
+}
+
+.formInput,
+.formSelect,
+.formTextarea {
+  border: 1px solid var(--ink-10);
+  background: var(--white);
+  padding: 11px 12px;
+  font-size: 15.5px;
+  font-family: var(--font-body);
+  color: var(--ink);
+  border-radius: var(--r-sm);
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.formInput:focus,
+.formSelect:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: var(--amber);
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 76px;
+}
+
+.chipGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  border: 1px solid var(--ink-10);
+  background: var(--white);
+  color: var(--ink-70, var(--ink-60));
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 9px 14px;
+  border-radius: var(--r-sm);
+  transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+}
+
+.chip:hover {
+  border-color: var(--ink-60);
+}
+
+.chipSelected {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: var(--ink);
+}
+
+.formSubmit {
+  background: var(--amber);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 15px;
+  border-radius: var(--r-sm);
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.formSubmit:hover:not(:disabled) {
+  background: var(--amber-light);
+}
+
+.formSubmit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.formNote {
+  font-size: 13px;
+  color: var(--ink-60);
+}
+
+.formError {
+  font-size: 14px;
+  color: var(--coral);
+}
+
+.formError a {
+  text-decoration: underline;
+}
+
+.formSuccess {
+  padding: 36px 0;
+  max-width: 440px;
+}
+
+.formSuccessMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--amber);
+  color: var(--ink);
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+.formSuccessTitle {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.formSuccessBody {
+  font-size: 15px;
+  color: var(--ink-60);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.formSuccessReset {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 860px) {
+  .quoteInner { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .formRow { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════ FAQ ════════════════════════════════════════ */
+.faq {
+  padding: clamp(56px, 7vw, 96px) clamp(20px, 5vw, 48px);
+  scroll-margin-top: 96px;
+}
+
+.faqInner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faqList {
+  margin-top: 32px;
+}
+
+.faqItem {
+  border-top: 1px solid var(--ink-10);
+  padding: 20px 0;
+}
+
+.faqList .faqItem:last-child {
+  border-bottom: 1px solid var(--ink-10);
+}
+
+.faqQ {
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16.5px;
+  list-style: none;
+}
+
+.faqQ::-webkit-details-marker { display: none; }
+
+.faqToggle {
+  flex-shrink: 0;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--amber-dark);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.faqItem[open] .faqToggle {
+  transform: rotate(45deg);
+}
+
+.faqA {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-60);
+  max-width: 62ch;
+}
+
+/* ══════════════════ CLOSING CTA ════════════════════════════════ */
+.closing {
+  text-align: center;
+  padding: clamp(48px, 6vw, 76px) clamp(20px, 5vw, 48px) clamp(72px, 8vw, 100px);
+  border-top: 1px solid var(--ink-10);
+}
+
+.closingTitle {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(24px, 2.8vw, 32px);
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.closingSub {
+  font-size: 15px;
+  color: var(--ink-60);
+  margin-bottom: 24px;
+}
+
+/* ══════════════════ FOOTER ══════════════════════════════════════ */
+.footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(250, 248, 244, 0.08);
+  padding-bottom: 64px; /* clears the mobile sticky bar */
+}
+
+.footerInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px clamp(20px, 4vw, 40px) 28px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.footerBrand {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footerLogo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footerLogoIcon {
+  height: 44px;
+  width: auto;
+}
+
+.footerLogoType {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footerLogoName {
+  height: 20px;
+  width: auto;
+}
+
+.footerLogoTagline {
+  height: 10px;
+  width: auto;
+}
+
+.footerBrand p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(250, 248, 244, 0.5);
+  max-width: 32ch;
+}
+
+.footerCol h3 {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 6px;
+}
+
+.footerCol h3:not(:first-child) {
+  margin-top: 16px;
+}
+
+.footerCol p {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: rgba(250, 248, 244, 0.6);
+}
+
+.footerHours {
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: rgba(250, 248, 244, 0.5);
+}
+
+.footerContact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.footerContact a {
+  color: rgba(250, 248, 244, 0.75);
+}
+
+.footerContact a:hover {
+  color: var(--amber);
+}
+
+.footerQuoteLink {
+  margin-top: 6px;
+  font-weight: 700;
+  color: var(--amber) !important;
+}
+
+.footerLegal {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px clamp(20px, 4vw, 40px) 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12.5px;
+  color: rgba(250, 248, 244, 0.4);
+  border-top: 1px solid rgba(250, 248, 244, 0.08);
+}
+
+.footerLegal a {
+  color: rgba(250, 248, 244, 0.4);
+}
+
+.footerLegal a:hover {
+  color: rgba(250, 248, 244, 0.7);
+}
+
+@media (max-width: 780px) {
+  .footerInner { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .footerInner { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════ MOBILE STICKY CONTACT BAR ══════════════════ */
+.mobileBar {
+  display: none;
+}
+
+@media (max-width: 780px) {
+  .mobileBar {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.12);
+  }
+
+  .mobileBarCall {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px;
+  }
+
+  .mobileBarQuote {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--amber);
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px;
+  }
+}
