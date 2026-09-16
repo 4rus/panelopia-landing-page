@@ -84,19 +84,19 @@ const galleryItems = [
     alt: 'Black marble-effect wall panel with gold slat trim around a TV wall',
   },
   {
-    src: '/images/entryway-slat.jpg',
+    src: '/images/entryway-slat.webp',
     alt: 'Oak WPC slat wall panel installed in a residential entryway',
   },
   {
-    src: '/images/black-slat-mirror.jpg',
+    src: '/images/black-slat-mirror.webp',
     alt: 'Black fluted WPC slat accent wall with a round mirror',
   },
   {
-    src: '/images/showroom-main.jpg',
-    alt: 'Panelopia showroom hallway finished in marble sheet panels',
+    src: '/images/showroom-main.webp',
+    alt: 'Panelopia showroom lounge area with wood slat panel walls and pendant lighting',
   },
   {
-    src: '/images/office-slat-wallpaper.jpg',
+    src: '/images/office-slat-wallpaper.webp',
     alt: 'Reception office featuring wallpaper and a wood slat wall panel',
   },
 ]
